@@ -1,0 +1,27 @@
+{
+  "name": "easy-migrate",
+  "version": "1.0.1",
+  "description": "an easy migration framework for node, generate up migration and down migration content automatically",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangmingfeng/easy-migrate.git"
+  },
+  "keywords": [
+    "easy-migrate",
+    "migration",
+    "automatically"
+  ],
+  "author": "zhangmingfeng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhangmingfeng/easy-migrate/issues"
+  },
+  "dependencies": {
+    "commander": "^2.18.0"
+  },
+  "homepage": "https://github.com/zhangmingfeng/easy-migrate#readme"
+}
