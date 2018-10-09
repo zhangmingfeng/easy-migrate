@@ -1,0 +1,38 @@
+'use strict';
+const Sequelize = require('sequelize');
+
+module.exports = {
+    up: async function (queryInterface) {
+        // add columns<% -%>
+    <% up.columns.create.forEach((item) => {%>
+        <%- item -%>
+    <% }); %>
+
+        // modify columns<% -%>
+    <% up.columns.modify.forEach((item) => {%>
+        <%- item -%>
+    <% }); %>
+
+        // drop columns<% -%>
+    <% up.columns.drop.forEach((item) => {%>
+        <%- item -%>
+    <% }); %>
+    },
+
+    down: async function (queryInterface) {
+        // add columns<% -%>
+    <% down.columns.create.forEach((item) => {%>
+        <%- item -%>
+    <% }); %>
+
+        // modify columns<% -%>
+    <% down.columns.modify.forEach((item) => {%>
+        <%- item -%>
+    <% }); %>
+
+        // drop columns<% -%>
+    <% down.columns.drop.forEach((item) => {%>
+        <%- item -%>
+    <% }); %>
+    }
+};
