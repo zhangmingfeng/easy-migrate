@@ -3,7 +3,8 @@ const path = require('path');
 const fs = require('fs-extra');
 const {merge: deepMerge} = require('lodash');
 const pkg = require('../package.json');
-
+const util = require('util');
+const ejs = require('ejs');
 
 async function run() {
     program
@@ -55,8 +56,35 @@ async function run() {
         process.exit(1);
     }
 
-    await require('../lib/create')(dbConfig, entityPath);
+    const result = await require('../lib/create')(dbConfig, entityPath);
+    const fileData = await ejs.renderFile(path.join(__dirname, '..', 'template', 'migrate-file.ejs'), {
+        up: result.up,
+        down: result.down
+    });
+    const migrationsPath = program.migrationsPath;
+    if (!(await fs.exists(migrationsPath))) {
+        await fs.mkdirp(migrationsPath);
+    }
+    const fileName = `${getCurrentYYYYMMDDHHmms()}-migration.js`;
+    await fs.writeFile(path.join(migrationsPath, fileName), fileData);
+    console.log(`migration file '${fileName}' generated!`);
 }
+
+function getCurrentYYYYMMDDHHmms() {
+    const date = new Date();
+    return [
+        date.getFullYear(),
+        format(date.getMonth() + 1),
+        format(date.getDate()),
+        format(date.getHours()),
+        format(date.getMinutes()),
+        format(date.getSeconds())
+    ].join('');
+}
+
+function format(i) {
+    return parseInt(i, 10) < 10 ? '0' + i : i;
+};
 
 run();
 

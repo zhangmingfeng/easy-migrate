@@ -1,3 +1,4 @@
+//node migrate-create.js --entity-file ../entity/demo/test-zhang.js --db-config-path ../config
 module.exports = {
     tableName: 'test_zhang12',
     columns: {
@@ -14,5 +15,12 @@ module.exports = {
             defaultValue: 0.01,
             comment: '测试attr6attr6'
         }
-    }
+    },
+    indexs: [
+        {
+            fields: ['orderId', 'attr6'],
+            type: 'UNIQUE',
+            name: 'index_orderId'
+        }
+    ]
 };
