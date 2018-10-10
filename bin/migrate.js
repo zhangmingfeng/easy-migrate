@@ -5,7 +5,8 @@ const pkg = require('../package.json');
 
 program
     .version(pkg.version)
-    .command('create', 'Create a new migration', {isDefault: true})
-    .command('up [name]', 'Migrate up to a give migration')
-    .command('down [name]', 'Migrate down to a given migration')
+    .command('config', 'show migrate config')
+    .command('create', 'Create a new migration')
+    .command('up', 'Migrate up to a give migration version, default lastest')
+    .command('down', 'Migrate down to a given migration version, default current pre-version')
     .parse(process.argv);
