@@ -16,11 +16,10 @@ module.exports = {
             comment: '测试attr6attr6'
         }
     },
-    indexs: [
-        {
+    indexs: {
+        index_orderId: {
             fields: ['orderId', 'attr6'],
-            type: 'UNIQUE',
-            name: 'index_orderId'
+            type: 'UNIQUE'
         }
-    ]
+    }
 };

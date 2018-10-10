@@ -2,7 +2,7 @@
 const Sequelize = require('sequelize');
 
 /**
-* Auto-created by execute migrate-create script, Please not modify it manually!
+* Auto-created by execute migrate-create script, Please do not modify it manually!
 */
 module.exports = {
     up: async function (queryInterface) {
@@ -20,6 +20,16 @@ module.exports = {
     <% up.columns.drop.forEach((item) => {%>
         <%- item -%>
     <% }); %>
+
+        // drop indexs<% -%>
+    <% up.index.drop.forEach((item) => {%>
+        <%- item -%>
+    <% }); %>
+
+        // add indexs<% -%>
+    <% up.index.add.forEach((item) => {%>
+        <%- item -%>
+    <% }); %>
     },
 
     down: async function (queryInterface) {
@@ -35,6 +45,16 @@ module.exports = {
 
         // drop columns<% -%>
     <% down.columns.drop.forEach((item) => {%>
+        <%- item -%>
+    <% }); %>
+
+        // drop indexs<% -%>
+    <% down.index.drop.forEach((item) => {%>
+        <%- item -%>
+    <% }); %>
+
+        // add indexs<% -%>
+    <% down.index.add.forEach((item) => {%>
         <%- item -%>
     <% }); %>
     }
