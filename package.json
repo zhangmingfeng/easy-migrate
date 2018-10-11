@@ -1,12 +1,15 @@
 {
   "name": "easy-migrate",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "an easy migration framework for node, generate up migration and down migration content automatically",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "migrate": "./bin/migrate.js"
+    "migrate": "./bin/migrate.js",
+    "migrate-up": "./bin/migrate-up.js",
+    "migrate-down": "./bin/migrate-down.js",
+    "migrate-config": "./bin/migrate-config.js"
   },
   "repository": {
     "type": "git",
