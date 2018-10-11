@@ -8,7 +8,7 @@ program
     .usage('[options] <name>')
     .option('--db-config-path <path>', 'Set db config path')
     .option('--target-version <version>', 'Migrate up to a give migration version, default lastest')
-    .option('--migrations-path <path>', 'Set migrations out path')
+    .option('--migrations-path <path>', 'Set migrations path')
     .parse(process.argv);
 
 async function run() {
