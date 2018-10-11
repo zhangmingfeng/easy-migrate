@@ -7,7 +7,7 @@ program
     .version(pkg.version)
     .usage('[options] <name>')
     .option('--db-config-path <path>', 'Set db config path')
-    .option('--target-version <version>', 'Migrate up to a give migration version, default lastest')
+    .option('--target-version <version>', 'Migrate down to a give migration version, default lastest')
     .option('--migrations-path <path>', 'Set migrations out path')
     .parse(process.argv);
 
@@ -23,7 +23,7 @@ async function run() {
             console.error(`'${migrationsPath}' does not exist`);
             process.exit(1);
         }
-        await require('../lib/migrate/up')(dbConfig, targetVersion, migrationsPath);
+        await require('../lib/migrate/down')(dbConfig, targetVersion, migrationsPath);
     } catch (e) {
         throw e;
         console.error(e.message);
