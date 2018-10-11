@@ -76,7 +76,6 @@ module.exports = {
             columns1: {
             type: Sequelize.INTEGER(11),
             allowNull: false,
-            defaultValue: 0,
             primaryKey: true,
             autoIncrement: true,
             comment: 'columns1 comment'
