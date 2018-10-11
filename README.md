@@ -44,9 +44,9 @@ Options:
   -h, --help                output usage information
 
 ```
---entity-path: 执行模型配置文件的目录（项目开发过程中一般按模块开发的话，模型也应该是模块级的），可以是一个文件，也可以通过设置环境变量: MIGRATE_ENTITY_PATH
---db-config-path: 数据库的配置文件路径，也可以通过设置环境变量: MIGRATE_DB_CONFIG_PATH
---migrations-path: 生成的migration文件输出目录，也可以通过设置环境变量: MIGRATE_MIGRATIONS_PATH
+- --entity-path: 执行模型配置文件的目录（项目开发过程中一般按模块开发的话，模型也应该是模块级的），可以是一个文件，也可以通过设置环境变量: MIGRATE_ENTITY_PATH
+- --db-config-path: 数据库的配置文件路径，也可以通过设置环境变量: MIGRATE_DB_CONFIG_PATH
+- --migrations-path: 生成的migration文件输出目录，也可以通过设置环境变量: MIGRATE_MIGRATIONS_PATH
 
 ```bash
 $ migrate create --entity-path /path/to/entity/somemodule --db-config-path /path/to/db/config --migrations-path /path/to/migrations
@@ -202,9 +202,9 @@ Options:
   --migrations-path <path>    Set migrations path
   -h, --help                  output usage information
 ```
---db-config-path: 数据库的配置文件路径，也可以通过设置环境变量: MIGRATE_DB_CONFIG_PATH
---target-version: 指定迁移的版本，默认是当前migration文件中版本最新的
---migrations-path: migration文件所在目录，也可以通过设置环境变量: MIGRATE_MIGRATIONS_PATH
+- --db-config-path: 数据库的配置文件路径，也可以通过设置环境变量: MIGRATE_DB_CONFIG_PATH
+- --target-version: 指定迁移的版本，默认是当前migration文件中版本最新的
+- --migrations-path: migration文件所在目录，也可以通过设置环境变量: MIGRATE_MIGRATIONS_PATH
 
 ```bash
 $ migrate up --db-config-path /path/to/db/config --migrations-path /path/to/migrations
@@ -246,9 +246,9 @@ Options:
   -h, --help                  output usage information
 
 ```
---db-config-path: 数据库的配置文件路径，也可以通过设置环境变量: MIGRATE_DB_CONFIG_PATH
---target-version: 指定迁移的版本，默认是当前数据库最新版本
---migrations-path: migration文件所在目录，也可以通过设置环境变量: MIGRATE_MIGRATIONS_PATH
+- --db-config-path: 数据库的配置文件路径，也可以通过设置环境变量: MIGRATE_DB_CONFIG_PATH
+- --target-version: 指定迁移的版本，默认是当前数据库最新版本
+- --migrations-path: migration文件所在目录，也可以通过设置环境变量: MIGRATE_MIGRATIONS_PATH
 
 ```bash
 $ migrate down --db-config-path /path/to/db/config --migrations-path /path/to/migrations
