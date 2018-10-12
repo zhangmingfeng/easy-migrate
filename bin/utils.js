@@ -63,6 +63,16 @@ module.exports = {
         return entityPath;
     },
 
+    async getModelDefinedPath(modelDefinedPath) {
+        if (!modelDefinedPath) {
+            modelDefinedPath = process.env['MIGRATE_MODEL_DEFINED_PATH'];
+            if (modelDefinedPath) {
+                console.log(`use MIGRATE_MODEL_DEFINED_PATH for model defined path: ${modelDefinedPath}`);
+            }
+        }
+        return modelDefinedPath;
+    },
+
     getMigrationsPath(migrationsPath) {
         if (!migrationsPath) {
             migrationsPath = process.env['MIGRATE_MIGRATIONS_PATH'];

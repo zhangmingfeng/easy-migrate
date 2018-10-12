@@ -37,17 +37,18 @@ $ migrate create -h
 Usage: migrate-create [options] <name>
 
 Options:
-  -V, --version             output the version number
-  --entity-path <path>      Set entity file path
-  --db-config-path <path>   Set db config path
-  --migrations-path <path>  Set migrations out path
-  -h, --help                output usage information
+  -V, --version                output the version number
+  --entity-path <path>         Set entity file path
+  --db-config-path <path>      Set db config path
+  --migrations-path <path>     Set migrations out path
+  --model-defined-path <path>  Set sequelize model defined file out path
+  -h, --help                   output usage information
 
 ```
 - --entity-path: 执行模型配置文件的目录（项目开发过程中一般按模块开发的话，模型也应该是模块级的），可以是一个文件，也可以通过设置环境变量: MIGRATE_ENTITY_PATH
 - --db-config-path: 数据库的配置文件路径，也可以通过设置环境变量: MIGRATE_DB_CONFIG_PATH
 - --migrations-path: 生成的migration文件输出目录，也可以通过设置环境变量: MIGRATE_MIGRATIONS_PATH
-
+- --model-defined-path: 当项目使用sequelize作为orm工具的时候，model定义文件可以根据配置文件自动生成，配置输出目录即可，也可以通过设置环境变量: MIGRATE_MODEL_DEFINED_PATH
 ```bash
 $ migrate create --entity-path /path/to/entity/somemodule --db-config-path /path/to/db/config --migrations-path /path/to/migrations
 migration file '20181011164723-migration.js' created!
