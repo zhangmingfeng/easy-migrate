@@ -6,7 +6,7 @@
 
 - 本工具的模型管理是基于[sequelize](https://github.com/sequelize/sequelize)，如需要手动修改migration文件，请参考它的API
 - 模型配置文件简单，目前只支持MySQL，根据配置文件的变化和数据库当前表结构的对比，自动生成迁移语句，开发人员只需要维护配置文件即可
-- 根据MySQL常用的数据类型，目前只支持MySQL的INT、VARCHAR、DECIMAL、DATETIME、DATE，其他类型，如FLOAT、DOUBLE,可以使用DECIMAL代替，CHAR使用VARCHAR代替
+- 根据MySQL常用的数据类型，目前只支持MySQL的INT、VARCHAR、DECIMAL、DATETIME、DATE、TEXT、LONGTEXT，其他类型，如FLOAT、DOUBLE,可以使用DECIMAL代替，CHAR使用VARCHAR代替
 - 后续版本会支持更多种数据库，sequelize支持的都可以
 
 # 安装
@@ -38,27 +38,27 @@ Usage: migrate-create [options] <name>
 
 Options:
   -V, --version                output the version number
-  --entity-path <path>         Set entity file path
+  --define-path <path>         Set define file path
   --db-config-path <path>      Set db config path
   --migrations-path <path>     Set migrations out path
-  --model-defined-path <path>  Set sequelize model defined file out path
+  --model-path <path>          Set sequelize model file out path
   -h, --help                   output usage information
 
 ```
-- --entity-path: 执行模型配置文件的目录（项目开发过程中一般按模块开发的话，模型也应该是模块级的），可以是一个文件，也可以通过设置环境变量: MIGRATE_ENTITY_PATH
+- --define-path: 执行模型配置文件的目录（项目开发过程中一般按模块开发的话，模型也应该是模块级的），可以是一个文件，也可以通过设置环境变量: MIGRATE_DEFINE_PATH
 - --db-config-path: 数据库的配置文件路径，也可以通过设置环境变量: MIGRATE_DB_CONFIG_PATH
 - --migrations-path: 生成的migration文件输出目录，也可以通过设置环境变量: MIGRATE_MIGRATIONS_PATH
-- --model-defined-path: 当项目使用sequelize作为orm工具的时候，model定义文件可以根据配置文件自动生成，配置输出目录即可，也可以通过设置环境变量: MIGRATE_MODEL_DEFINED_PATH
+- --model-path: 当项目使用sequelize作为orm工具的时候，model定义文件可以根据配置文件自动生成，配置输出目录即可，也可以通过设置环境变量: MIGRATE_MODEL_PATH
 ```bash
-$ migrate create --entity-path /path/to/entity/somemodule --db-config-path /path/to/db/config --migrations-path /path/to/migrations
+$ migrate create --define-path /path/to/define/somemodule --db-config-path /path/to/db/config --migrations-path /path/to/migrations
 migration file '20181011164723-migration.js' created!
 ```
 或者
 ```bash
-$ MIGRATE_ENTITY_PATH=/path/to/entity/somemodule MIGRATE_DB_CONFIG_PATH=/path/to/db/config MIGRATE_MIGRATIONS_PATH=/path/to/migrations migrate create
-use MIGRATE_DB_CONFIG for db config: /path/to/entity/somemodule
-use MIGRATE_ENTITY for entity path: /path/to/db/config
-use MIGRATE_MIGRATIONS for migrations path: /path/to/migrations
+$ MIGRATE_DEFINE_PATH=/path/to/define/somemodule MIGRATE_DB_CONFIG_PATH=/path/to/db/config MIGRATE_MIGRATIONS_PATH=/path/to/migrations migrate create
+use MIGRATE_DB_CONFIG_PATH for db config: /path/to/db/config
+use MIGRATE_DEFINE_PATH for define path: /path/to/entity/somemodule
+use MIGRATE_MIGRATIONS_PATH for migrations path: /path/to/migrations
 migration file '20181011164723-migration.js' created!
 ```
 
@@ -213,8 +213,8 @@ now version is up to 20181011164723
 或者
 ```bash
 $ MIGRATE_DB_CONFIG_PATH=/path/to/db/config MIGRATE_MIGRATIONS_PATH=/path/to/migrations migrate up
-use MIGRATE_DB_CONFIG for db config: /path/to/db/config
-use MIGRATE_MIGRATIONS for migrations path: /path/to/migrations
+use MIGRATE_DB_CONFIG_PATH for db config: /path/to/db/config
+use MIGRATE_MIGRATIONS_PATH for migrations path: /path/to/migrations
 now version is up to 20181011164723
 ```
 
@@ -257,8 +257,8 @@ now version is down to 0
 或者
 ```bash
 $ MIGRATE_DB_CONFIG_PATH=/path/to/db/config MIGRATE_MIGRATIONS_PATH=/path/to/migrations migrate up
-use MIGRATE_DB_CONFIG for db config: /path/to/db/config
-use MIGRATE_MIGRATIONS for migrations path: /path/to/migrations
+use MIGRATE_DB_CONFIG_PATH for db config: /path/to/db/config
+use MIGRATE_MIGRATIONS_PATH for migrations path: /path/to/migrations
 now version is down to 0
 ```
 

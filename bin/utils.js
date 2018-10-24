@@ -9,7 +9,7 @@ module.exports = {
                 console.error('db config is empty');
                 process.exit(1);
             }
-            console.log(`use MIGRATE_DB_CONFIG for db config: ${dbConfigPath}`);
+            console.log(`use MIGRATE_DB_CONFIG_PATH for db config: ${dbConfigPath}`);
         }
         if (!(await fs.exists(dbConfigPath))) {
             console.error(`'${dbConfigPath}' does not exist`);
@@ -46,31 +46,31 @@ module.exports = {
         return dbConfig;
     },
 
-    async getEntityPath(entityPath) {
-        if (!entityPath) {
-            entityPath = process.env['MIGRATE_ENTITY_PATH'];
-            if (!entityPath) {
-                console.error('entity path is empty');
+    async getDefinePath(definePath) {
+        if (!definePath) {
+            definePath = process.env['MIGRATE_DEFINE_PATH'];
+            if (!definePath) {
+                console.error('define path is empty');
                 process.exit(1);
             }
-            console.log(`use MIGRATE_ENTITY for entity path: ${entityPath}`);
+            console.log(`use MIGRATE_DEFINE_PATH for define path: ${definePath}`);
         }
 
-        if (!(await fs.exists(entityPath))) {
-            console.error(`'${entityPath}' does not exist`);
+        if (!(await fs.exists(definePath))) {
+            console.error(`'${definePath}' does not exist`);
             process.exit(1);
         }
-        return entityPath;
+        return definePath;
     },
 
-    async getModelDefinedPath(modelDefinedPath) {
-        if (!modelDefinedPath) {
-            modelDefinedPath = process.env['MIGRATE_MODEL_DEFINED_PATH'];
-            if (modelDefinedPath) {
-                console.log(`use MIGRATE_MODEL_DEFINED_PATH for model defined path: ${modelDefinedPath}`);
+    async getModelPath(modelPath) {
+        if (!modelPath) {
+            modelPath = process.env['MIGRATE_MODEL_PATH'];
+            if (modelPath) {
+                console.log(`use MIGRATE_MODEL_PATH for model path: ${modelPath}`);
             }
         }
-        return modelDefinedPath;
+        return modelPath;
     },
 
     getMigrationsPath(migrationsPath) {
@@ -80,7 +80,7 @@ module.exports = {
                 console.error('migrations path is empty');
                 process.exit(1);
             }
-            console.log(`use MIGRATE_MIGRATIONS for migrations path: ${migrationsPath}`);
+            console.log(`use MIGRATE_MIGRATIONS_PATH for migrations path: ${migrationsPath}`);
         }
         return migrationsPath;
     },
