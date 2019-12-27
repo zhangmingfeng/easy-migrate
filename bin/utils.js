@@ -1,5 +1,6 @@
 const {merge: deepMerge} = require('lodash');
 const fs = require('fs-extra');
+const path = require('path');
 
 module.exports = {
     async getDBconfig(dbConfigPath) {
@@ -37,7 +38,7 @@ module.exports = {
                 // no logger
             }
         };
-        let dbConfig = require(dbConfigPath);
+        let dbConfig = require(path.resolve(dbConfigPath));
         dbConfig = deepMerge(defConfig, dbConfig);
         if (dbConfig.dialect !== 'mysql') {
             console.error('At present, MySQL is only supported');

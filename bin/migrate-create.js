@@ -20,7 +20,7 @@ async function run() {
         const dbConfig = await utils.getDBconfig(program.dbConfigPath);
         const definePath = await utils.getDefinePath(program.definePath);
         const modelPath = await utils.getModelPath(program.modelPath);
-        const {migrateInfo, modelFiles} = await require('../lib/migrate/create')(dbConfig, definePath, modelPath);
+        const {migrateInfo, modelFiles} = await require('../lib/migrate/create')(dbConfig, path.resolve(definePath), path.resolve(modelPath));
         const fileData = await ejs.renderFile(path.join(__dirname, '..', 'template', 'migrate-file.ejs'), {
             up: migrateInfo.up,
             down: migrateInfo.down
